@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import loginImage from "../assets/login-women.png";
-import user from "../assets/user.png";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +8,8 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import left from "../assets/2nd.png";
+import right from "../assets/3rd.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -221,7 +222,7 @@ const Login = () => {
           Not a member? <span style={{ color: "#4caf50" }}>Register now</span>
         </Typography>
       </Box>
-      {/*///R///*/}
+
       <Box
         sx={{
           background: "linear-gradient(135deg, #F3F9EE, #EAF5E3)",
@@ -232,46 +233,148 @@ const Login = () => {
           minHeight: 540,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
+          justifyContent: "space-between",
           position: "relative",
           overflow: "hidden",
           boxShadow: "0px 10px 30px rgba(0,0,0,0.12)",
         }}
       >
-        <img src={user} width="90" style={{ marginBottom: "10px" }} />
-        {/*<img src={Icon} width="60" style={{ marginBottom: 10 }} />*/}
-
-        <img
-          src={loginImage}
-          width="300"
-          style={{
-            marginBottom: "25px",
-            animation: "float 4s ease-in-out infinite",
-            zIndex: 2,
+        <Box
+          component="img"
+          src={left}
+          sx={{
+            position: "absolute",
+            top: 50,
+            left: 10,
+            width: 230,
+            zIndex: 1,
           }}
         />
 
-        <Typography
+        <Box
+          component="img"
+          src={right}
           sx={{
-            mt: 2,
-            fontSize: 18,
-            color: "#444",
+            position: "absolute",
+            top: 100,
+            right: 20,
+            width: 160,
+            zIndex: 1,
           }}
-        >
-          Make your work easier and organized
-        </Typography>
+        />
 
-        <Typography
+        <Box
           sx={{
-            fontSize: 20,
-            fontWeight: 700,
-            color: "#111",
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
           }}
         >
-          with Tuga's App
-        </Typography>
+          {/* MAIN IMAGE */}
+          <Box
+            component="img"
+            src={loginImage}
+            sx={{
+              width: 280,
+              zIndex: 2,
+            }}
+          />
+          <Box
+            sx={{
+              position: "absolute",
+              left: -25,
+              bottom: 40,
+              width: 200,
+              backgroundColor: "#F9FFFB",
+              borderRadius: 3,
+              padding: 2,
+              boxShadow: "0px 12px 30px rgba(0,0,0,0.15)",
+              zIndex: 3,
+              animation: "float 5s ease-in-out infinite",
+            }}
+          >
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mb: 1, top: 40 } }
+            >
+              <Typography fontSize={11} color="#999" fontWeight={600}>
+                CURRENT TASK
+              </Typography>
+
+              <Box
+                sx={{
+                  backgroundColor: "#E8F8EE",
+                  color: "#2ECC71",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  px: 1,
+                  borderRadius: 10,
+                }}
+              >
+                84%
+              </Box>
+            </Box>
+
+            <Typography fontWeight={700} fontSize={15}>
+              Canva Design
+            </Typography>
+
+            <Typography fontSize={13} color="#777" mb={1}>
+              📋 10 Tasks
+            </Typography>
+
+            <Box sx={{ height: 6, background: "#EAEAEA", borderRadius: 10 }}>
+              <Box
+                sx={{
+                  width: "84%",
+                  height: "100%",
+                  background: "#2ECC71",
+                  borderRadius: 10,
+                }}
+              />
+            </Box>
+          </Box>
+        </Box>
+
+        <Box sx={{ textAlign: "center", pb: 2 }}>
+          <Box
+            sx={{ display: "flex", gap: 1, justifyContent: "center", mb: 3 }}
+          >
+            <Box
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: "#cfd8dc",
+              }}
+            />
+            <Box
+              sx={{
+                width: 22,
+                height: 8,
+                borderRadius: 10,
+                background: "#111",
+              }}
+            />
+            <Box
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: "#cfd8dc",
+              }}
+            />
+          </Box>
+
+          <Typography fontSize={18} color="#444">
+            Make your work easier and more organized
+          </Typography>
+
+          <Typography fontSize={20} fontWeight={700}>
+            with Tuga's App
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
